@@ -38,6 +38,7 @@ Partial Class Form1
         Me.btnHashTable = New System.Windows.Forms.Button()
         Me.btnStack = New System.Windows.Forms.Button()
         Me.btnQueue = New System.Windows.Forms.Button()
+        Me.btnArrays = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -153,12 +154,22 @@ Partial Class Form1
         Me.btnQueue.Text = "Queue"
         Me.btnQueue.UseVisualStyleBackColor = True
         '
+        'btnArrays
+        '
+        Me.btnArrays.Location = New System.Drawing.Point(297, 172)
+        Me.btnArrays.Name = "btnArrays"
+        Me.btnArrays.Size = New System.Drawing.Size(75, 23)
+        Me.btnArrays.TabIndex = 8
+        Me.btnArrays.Text = "Arrays"
+        Me.btnArrays.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AcceptButton = Me.btnClickMe
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(399, 261)
+        Me.Controls.Add(Me.btnArrays)
         Me.Controls.Add(Me.btnQueue)
         Me.Controls.Add(Me.btnStack)
         Me.Controls.Add(Me.btnHashTable)
@@ -192,4 +203,5 @@ Partial Class Form1
     Friend WithEvents btnHashTable As Button
     Friend WithEvents btnStack As Button
     Friend WithEvents btnQueue As Button
+    Friend WithEvents btnArrays As Button
 End Class

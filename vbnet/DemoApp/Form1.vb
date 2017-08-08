@@ -28,6 +28,9 @@
     End Sub
 
     Private Sub btnList_Click(sender As Object, e As EventArgs) Handles btnList.Click
+        '=====================================================
+        'ARRAY LIST
+        '=====================================================
         Dim i As Integer
         Dim ItemList As New ArrayList()
         ItemList.Add("Item4")
@@ -62,6 +65,9 @@
     End Sub
 
     Private Sub btnHashTable_Click(sender As Object, e As EventArgs) Handles btnHashTable.Click
+        '=====================================================
+        'HASH TABLE
+        '=====================================================
         Dim weeks As New Hashtable
         Dim day As New DictionaryEntry
         weeks.Add("1", "Sun")
@@ -87,7 +93,9 @@
     End Sub
 
     Private Sub btnStack_Click(sender As Object, e As EventArgs) Handles btnStack.Click
-        'LIFO: Last In Last Out
+        '=====================================================
+        'STACK (LIFO - Last In Last Out)
+        '=====================================================
         Dim stackTable As New Stack
         stackTable.Push("Sun")
         stackTable.Push("Mon")
@@ -111,7 +119,9 @@
     End Sub
 
     Private Sub btnQueue_Click(sender As Object, e As EventArgs) Handles btnQueue.Click
-        'FIFO: First In First Out
+        '=====================================================
+        'STACK (FIFO - First In First Out)
+        '=====================================================
         Dim queueList As New Queue
         queueList.Enqueue("Sun")
         queueList.Enqueue("Mon")
@@ -129,5 +139,31 @@
         Else
             MsgBox("SUNDAY was not found")
         End If
+    End Sub
+
+    Private Sub btnArrays_Click(sender As Object, elem As EventArgs) Handles btnArrays.Click
+        '=====================================================
+        'ARRAY
+        '=====================================================
+        Dim i As Integer
+        Dim week(6) As String
+        week(0) = "Sunday"
+        week(1) = "Monday"
+        week(2) = "Tuesday"
+        week(3) = "Wednesday"
+        week(4) = "Thursday"
+        week(5) = "Friday"
+        week(6) = "Saturday"
+        MsgBox("Array before RESIZE operation: " + week.Length.ToString + " elements")
+        For i = 0 To week.Length - 1
+            MsgBox(week(i))
+        Next
+        Array.Resize(week, 3)
+        MsgBox("Array after RESIZE operation: " + week.Length.ToString + " elements")
+
+        Dim arr As Integer() = {10, 30, 50}
+        For Each e As Integer In arr
+            MsgBox(e)
+        Next
     End Sub
 End Class
