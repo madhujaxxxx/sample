@@ -1,4 +1,6 @@
-﻿Public Class Form1
+﻿Imports System.Collections.Specialized
+
+Public Class Form1
     Private Sub BtnClickMe_Click(sender As Object, e As EventArgs) Handles btnClickMe.Click
         btnClickMe.Text = "Clicked"
         Me.BackColor = Color.GreenYellow
@@ -88,7 +90,7 @@
         'Remove an item
         weeks.Remove("3")
         For Each day In weeks
-            MsgBox("Key: " + day.Key + ", Value: " + day.Value)
+            MsgBox("Key: " & day.Key & ", Value: " & day.Value)
         Next
     End Sub
 
@@ -106,9 +108,9 @@
         stackTable.Push("Sat")
         If stackTable.Contains("Tue") Then
             MsgBox("Found TUESDAY on the stack")
-            MsgBox("Stack before POP operation: " + stackTable.Count.ToString + " elements")
+            MsgBox("Stack before POP operation: " & stackTable.Count.ToString & " elements")
             stackTable.Pop()
-            MsgBox("Stack after POP operation: " + stackTable.Count.ToString + " elements")
+            MsgBox("Stack after POP operation: " & stackTable.Count.ToString & " elements")
             'Display the stack
             For Each elem In stackTable
                 MsgBox(elem)
@@ -130,9 +132,9 @@
         queueList.Enqueue("Thu")
         queueList.Enqueue("Fri")
         queueList.Enqueue("Sat")
-        MsgBox("Queue before DEQUEUE operation: " + queueList.Count.ToString + " elements")
+        MsgBox("Queue before DEQUEUE operation: " & queueList.Count.ToString & " elements")
         queueList.Dequeue()
-        MsgBox("Queue after DEQUEUE operation: " + queueList.Count.ToString + " elements")
+        MsgBox("Queue after DEQUEUE operation: " & queueList.Count.ToString & " elements")
         MsgBox(queueList.Peek())
         If queueList.Contains("Sun") Then
             MsgBox("SUNDAY found")
@@ -143,7 +145,7 @@
 
     Private Sub btnArrays_Click(sender As Object, elem As EventArgs) Handles btnArrays.Click
         '=====================================================
-        'ARRAY
+        'ARRAYS
         '=====================================================
         Dim i As Integer
         Dim week(6) As String
@@ -154,16 +156,63 @@
         week(4) = "Thursday"
         week(5) = "Friday"
         week(6) = "Saturday"
-        MsgBox("Array before RESIZE operation: " + week.Length.ToString + " elements")
+        MsgBox("Array before RESIZE operation: " & week.Length.ToString & " elements")
         For i = 0 To week.Length - 1
             MsgBox(week(i))
         Next
         Array.Resize(week, 3)
-        MsgBox("Array after RESIZE operation: " + week.Length.ToString + " elements")
+        MsgBox("Array after RESIZE operation: " & week.Length.ToString & " elements")
 
         Dim arr As Integer() = {10, 30, 50}
         For Each e As Integer In arr
             MsgBox(e)
         Next
+    End Sub
+
+    Private Sub btnDynamicArrays_Click(sender As Object, e As EventArgs) Handles btnDynamicArrays.Click
+        '=====================================================
+        'DYNAMIC ARRAYS
+        '=====================================================
+        Dim i As Integer
+        Dim scores() As Integer
+
+        ReDim scores(1)
+        scores(0) = 100
+        scores(1) = 200
+
+        MsgBox("Array before RESIZING operation: " & scores.Length.ToString & " elements")
+        For i = 0 To scores.Length - 1
+            MsgBox(scores(i))
+        Next
+
+        ReDim Preserve scores(2)
+        scores(2) = 300
+
+        MsgBox("Array after RESIZING operation: " & scores.Length.ToString & " elements")
+        For i = 0 To scores.Length - 1
+            MsgBox(scores(i))
+        Next
+    End Sub
+
+    Private Sub btnNameValueCollection_Click(sender As Object, e As EventArgs) Handles btnNameValueCollection.Click
+        '=====================================================
+        'NAME VALUE COLLECTION
+        '=====================================================
+        Dim cities As New NameValueCollection
+        Dim key As String
+        Dim values() As String
+
+        cities.Add("CO", "Fort Collins")
+        cities.Add("CO", "Denver")
+        cities.Add("CA", "Palo Alto")
+        cities.Add("NY", "New York")
+
+        For Each key In cities.Keys
+            values = cities.GetValues(key)
+            MsgBox("State: " & key & " ==================================")
+            For Each value In values
+                MsgBox("Key: " & key & ", Value: " & value)
+            Next value
+        Next key
     End Sub
 End Class
